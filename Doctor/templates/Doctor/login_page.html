@@ -1,0 +1,135 @@
+{% extends 'Doctor/base.html' %}
+
+{% block content %}
+
+{% load static%}
+
+<nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#custom-collapse"><span
+          class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span
+          class="icon-bar"></span></button><a class="navbar-brand" href="{% url 'home' %}">{{ user.username }}</a>
+    </div>
+    <div class="collapse navbar-collapse" id="custom-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/home">Home</a></li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a href="#" onclick="$('#signOutBtn').click()" class="nav-link">Logout</a>
+          <form style='display: none;' method="POST" action="{% url 'logoutuser' %}">
+            {% csrf_token %}
+            <button id="signOutBtn" type="submit">Logout</button>
+          </form>
+        </li>
+        {% endif %}
+
+
+
+
+        <!--li.dropdown.navbar-cart-->
+        <!--    a.dropdown-toggle(href='#', data-toggle='dropdown')-->
+        <!--        span.icon-basket-->
+        <!--        |-->
+        <!--        span.cart-item-number 2-->
+        <!--    ul.dropdown-menu.cart-list(role='menu')-->
+        <!--        li-->
+        <!--            .navbar-cart-item.clearfix-->
+        <!--                .navbar-cart-img-->
+        <!--                    a(href='#')-->
+        <!--                        img(src='assets/images/shop/product-9.jpg', alt='')-->
+        <!--                .navbar-cart-title-->
+        <!--                    a(href='#') Short striped sweater-->
+        <!--                    |-->
+        <!--                    span.cart-amount 2 &times; $119.00-->
+        <!--                    br-->
+        <!--                    |-->
+        <!--                    strong.cart-amount $238.00-->
+        <!--        li-->
+        <!--            .navbar-cart-item.clearfix-->
+        <!--                .navbar-cart-img-->
+        <!--                    a(href='#')-->
+        <!--                        img(src='assets/images/shop/product-10.jpg', alt='')-->
+        <!--                .navbar-cart-title-->
+        <!--                    a(href='#') Colored jewel rings-->
+        <!--                    |-->
+        <!--                    span.cart-amount 2 &times; $119.00-->
+        <!--                    br-->
+        <!--                    |-->
+        <!--                    strong.cart-amount $238.00-->
+        <!--        li-->
+        <!--            .clearfix-->
+        <!--                .cart-sub-totle-->
+        <!--                    strong Total: $476.00-->
+        <!--        li-->
+        <!--            .clearfix-->
+        <!--                a.btn.btn-block.btn-round.btn-font-w(type='submit') Checkout-->
+        <!--li.dropdown-->
+        <!--    a.dropdown-toggle(href='#', data-toggle='dropdown') Search-->
+        <!--    ul.dropdown-menu(role='menu')-->
+        <!--        li-->
+        <!--            .dropdown-search-->
+        <!--                form(role='form')-->
+        <!--                    input.form-control(type='text', placeholder='Search...')-->
+        <!--                    |-->
+        <!--                    button.search-btn(type='submit')-->
+        <!--                        i.fa.fa-search-->
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="main">
+  <section class="module bg-dark-30" data-background="{% static 'assets/images/pharmacy_title.jpg' %}" id="home">
+    <div class="titan-caption">
+      <div class="caption-content">
+        <div class="font-alt mb-30 titan-title-size-1">Hello &amp; Welcome To</div>
+        <div class="font-alt mb-40 titan-title-size-4">Pharmacy Adda </div>
+
+      </div>
+    </div>
+  </section>
+  <section class="module">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-5 col-sm-offset-1 mb-sm-40">
+          <h4 class="font-alt">Login</h4>
+          <hr class="divider-w mb-10">
+          <h2>{{ error1 }}</h2>
+          <form class="form" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+              <input class="form-control" id="username" type="text" name="username" placeholder="Username" />
+            </div>
+            <div class="form-group">
+              <input class="form-control" id="password" type="password" name="password" placeholder="Password" />
+            </div>
+            <!-- <div clss="form-group">
+              <div class="input-group">
+                <div class="input-group-addon"><b> Role </b></div>
+                <select class="form-control input-lg" id="role" name="role" type="text" required="required">
+                  <option selected="Select Role">Select Role</option>
+                  <option value="D">Doctor</option>
+                  <option value="Pr">Provider</option>
+                  <option value="Pa">Patitent</option>
+
+                </select>
+              </div>
+            </div> -->
+            <div class="form-group">
+              <button class="btn btn-block btn-round btn-b" type="submit">Login</button>
+            </div>
+           
+          
+
+          </form>
+        </div>
+       
+         
+      
+    </div>
+
+
+    {%  endblock %}

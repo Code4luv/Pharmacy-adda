@@ -1,0 +1,16 @@
+{% extends 'Doctor/base.html' %}
+{% block content %}
+
+{% load static%}
+
+<h1>Create</h1>
+<h2>{{ error2 }}</h2>
+
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p}}
+  <button type="submit">Create</button>
+
+</form>
+
+{%  endblock %}
